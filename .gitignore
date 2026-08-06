@@ -1,0 +1,30 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Databases / checkpoints
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated images (keep only the ones you want to show as demos)
+images/
+
+# Generated blog markdown files (keep only your chosen demo blogs, un-ignore those individually)
+*.md
+!README.md
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
+*.log
