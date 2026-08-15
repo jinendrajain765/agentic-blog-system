@@ -57,7 +57,7 @@ Give it a topic. A router agent first classifies it (`closed_book` / `hybrid` / 
 |---|---|---|
 | Orchestration | LangGraph (`StateGraph`) | Conditional branching (research or not) and parallel fan-out (`Send()`) for workers |
 | Planning / Router LLM | Groq `openai/gpt-oss-120b` | Strong reasoning for single-shot planning calls (router, research, orchestrator) |
-| Section-writing LLM | Groq `qwen/qwen3.6-27b` (or `gpt-oss-120b`/`gpt-oss-20b` as fallback) | Separate token pool from the planning models, reducing shared rate-limit pressure |
+| Section-writing LLM | Groq  `gpt-oss-120b (or qwen model for fallback) | Separate token pool from the planning models, reducing shared rate-limit pressure |
 | Web research | Tavily Search API | Real-time evidence retrieval for topics needing current information |
 | Image generation | Pollinations.ai (free, no API key) | Diagram generation without billing/quota constraints |
 | Frontend | Streamlit | Live streaming progress, tabs for plan/evidence/preview/images/logs |
