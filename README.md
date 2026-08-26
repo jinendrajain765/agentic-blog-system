@@ -1,6 +1,6 @@
 # Forge Blog Studio — Multi-Agent Blog Writing System
 
-A LangGraph multi-agent pipeline that decides for itself whether a topic needs live web research, dynamically generates its own search queries, plans a variable-length outline, fans out into parallel writer agents, and self-corrects when its own output runs into token limits or rate errors — all streamed live into a Streamlit UI.
+A LangGraph multi-agent pipeline that decides for itself whether a topic needs live web research, dynamically generates its own search queries, plans a variable-length outline, fans out into parallel writer agents, and retries when its own output runs into token limits or rate errors — all streamed live into a Streamlit UI.
 
 Give it a topic. A router agent first classifies it (`closed_book` / `hybrid` / `open_book`) and, if research is warranted, writes 3–6 targeted search queries itself — no hardcoded query templates. An orchestrator agent then plans a variable number of sections based on topic complexity, a pool of worker agents write them concurrently, and a reducer agent merges, cites, and illustrates the result into a single downloadable post.
 
