@@ -20,6 +20,12 @@ images/
 # Generated blog markdown files (keep only your chosen demo blogs, un-ignore those individually)
 *.md
 !README.md
+!demystifying_public_key_cryptography_a_practical_guide.md
+!how_tlssl_secures_a_web_connection_a_deep_dive_into_the_tls_handshake.md
+!inside_the_machine_how_compilers_optimize_code_with_dead_code_elimination_loop_unrolling_and_inlining.md
+!demystifying_self-attention_how_transformers_see_the_world.md
+!july2026_cloudhosting_price_check_aws_ec2_vs_google_compute_engine_vs_azure_vms.md
+!2026_vector_database_showdown_performance_features_and_cost_compared.md
 
 # Jupyter
 .ipynb_checkpoints/
