@@ -303,10 +303,9 @@ def worker_node(payload: dict) -> dict:
 
     bullets_text = "\n- " + "\n- ".join(task.bullets)
     evidence_text = "\n".join(
-        f"- {e.title} | {e.url} | {e.published_at or 'date:unknown'}"
+        f"- {e.title} | {e.url} | {e.published_at or 'date:unknown'}\n  Content: {e.snippet or 'no snippet available'}"
         for e in evidence[:20]
     )
-
     messages = [
         SystemMessage(content=WORKER_SYSTEM),
         HumanMessage(
