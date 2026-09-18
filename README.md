@@ -35,7 +35,7 @@ Give it a topic. A router agent first classifies it (`closed_book` / `hybrid` / 
                               ┌──────▼──────────────┐
                               │  Reducer (subgraph)  │
                               │  ┌────────────────┐  │
-                              │  │ merge_content  │  │  Dedupe + join sections
+                              │  │ merge_content  │  │  join sections
                               │  └───────┬────────┘  │
                               │  ┌───────▼────────┐  │
                               │  │ decide_images  │  │  Plan diagrams (if useful)
