@@ -155,7 +155,7 @@ def research_node(state: State) -> dict:
     print("Queries sent to Tavily:", queries)
     raw: List[dict] = []
     for q in queries:
-        raw.extend(_tavily_search(q, max_results=2))
+        raw.extend(_tavily_search(q, max_results=5))
 
     if not raw:
         return {"evidence": []}
