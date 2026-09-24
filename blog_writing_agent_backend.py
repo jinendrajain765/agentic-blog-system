@@ -36,28 +36,28 @@ llm=ChatGroq(model="openai/gpt-oss-120b",temperature=0)# temp =0 because this mo
 class State(TypedDict):
     topic: str
 
-    # routing / research
+    #
     mode: str # comes from souter 
-    needs_research: bool #comes from router 
-    queries: List[str] #comes from router 
+    needs_research: bool 
+    queries: List[str] 
     evidence: List[EvidenceItem] #the result from the router for evey ans it gives key from the evidenceitem schema if their are 5 q and the max_resuts=2 so 10 results would be there and each result is a evidenceitem the ans should follow this evidenceitem schema so 10 evidenceitem would be there and this is converted into evidencepack pack of all evidenceitem object stored in a list 
-    plan: Optional[Plan] #orchestrator 
+    plan: Optional[Plan] 
 
-    # recency
+    
     as_of: str
     recency_days: int
 
-    # workers
+    
     sections: Annotated[List[tuple[int, str]], operator.add]  # (task_id, section_md)
 
-    # reducer/image
+    
     merged_md: str # merged section i.e a blog 
     md_with_placeholders: str # comes from the llm markdown with placeholders and that placehoder will be replaced by the image 
     image_specs: List[dict]
 
-    final: str #final blog 
+    final: str 
 
-# Router
+
 ROUTER_SYSTEM = """You are a routing module for a technical blog planner.
 
 Decide whether web research is needed BEFORE planning.
@@ -107,7 +107,7 @@ def router_node(state: State) -> dict: # decides if needs research for the topic
 def route_next(state: State) -> str: # conditioanl edge router->orchestrator or router->research->orchestrator 
     return "research" if state["needs_research"] else "orchestrator"
 
-#Research (Tavily) 
+
 def _tavily_search(query: str, max_results: int = 5) -> List[dict]: # takes every queries from the state and give the info against it 
     if not os.getenv("TAVILY_API_KEY"):
         return []
@@ -199,7 +199,7 @@ def research_node(state: State) -> dict:
     return {"evidence": evidence}
 
 
-#5)Orchestrator (Plan)
+
 
 # so the problem occured witn this system is ain tpm(token per limit) for this in the decide image did changes means the node was getting full markdown because of this this token problem was comming to gave only first 6k tokens bur then also while don research the problem came because of workers every task needs one worler to writ 1task means one section and earch worker was taking 2.5 tokens so for 5-6 worker the tokens is 12k and the limit is 8k to reduce this reducing this task for 5-6 to 3-4 so now 3-4 workers will work write th section
 
@@ -340,8 +340,8 @@ def worker_node(payload: dict) -> dict:
 
     return {"sections": [(task.id, section_md)]}
 
-#ReducerWithImages (subgraph)
-#erge_content -> decide_images -> generate_and_place_images
+
+
 
 def merge_content(state: State) -> dict: # merge the sections 
     plan = state["plan"]
