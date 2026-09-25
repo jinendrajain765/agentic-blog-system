@@ -32,7 +32,7 @@ class EvidenceItem(BaseModel): # every result from the reseacher results=info ag
 
 
 class RouterDecision(BaseModel): 
-    needs_research: bool # true or false 
+    needs_research: bool
     mode: Literal["closed_book", "hybrid", "open_book"]# open_book=needs research , closed=dont need research,hybrid =need research 
     reason: str
     queries: List[str] = Field(default_factory=list) # queries the router node  will produce 
